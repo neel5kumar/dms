@@ -66,3 +66,91 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+mkdir <project_name>
+cd <project_name>
+mkdir frontend
+mkdir backend
+
+#Git steps
+-
+
+
+cd backend
+pip3 install pipenv
+pipenv install --three
+
+
+pipenv install django 
+pipenv install  djangorestframework 
+pipenv install  django-rest-knox
+
+pipenv shell 
+#or / pipenv run(inside)
+
+django-admin startproject <project_name>
+cd <project_name>
+python manage.py startapp <service> e.g. employee
+
+open <project-name>/settings
+add following in INSTALLED_APPS
+    'rest_framework',
+    'rest_framework.authtoken',
+    '<service>', e.g. employees
+
+python manage.py makemigrations <service>
+>>>> No changes detected in app 'employee'
+python manage.py migrate 
+
+Dev Steps:
+
+1. under employee add models/models.py
+2. Try shell :  python manage.py shell 
+```
+ from employees.models  import Employees
+ ```
+
+ 3. Add following to settings.py
+ --------------
+ MEDIA_ROOT = '/Volumes/software/wisgo/mobile/elogitica/py_web/fin_help2'
+MEDIA_URL = '/media/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5000,
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+   ),
+   'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser'
+   ),
+   
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+    # ]
+}
+---------------
+4. models: Edit your module <service>/model.py. This contains permissions
+5. serializers: add <service>/serializers.py 
+6. Views/Pagination: add pagination based viewset in <service>/app.py. This class also contains PAGE_SIZE
+7. Urls
+    (a) add <service>/urls.py
+    (b)  Edit <project>/urls.py
+8. More points
+    (a) change postgre database
+    (b) Enable Auth
+    (c) check proper website
+
+
+
+frontend
+1. npx create-react-app <project_name>
+e.g. npx create-react-app dmsui
+2. in package.json add  "proxy": "http://localhost:8000" 
+
+
+
+
