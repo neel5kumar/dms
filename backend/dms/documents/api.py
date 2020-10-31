@@ -1,12 +1,29 @@
-from .models import Documents
+from .models import Documents,DocumentMeta
 from rest_framework import viewsets, permissions
-from .serializers import DocumentsSerializer
+from .serializers import DocumentsSerializer,DocumentMetaSerializer
 from collections import OrderedDict
 from rest_framework.response import Response
+from rest_framework.decorators import action
 from rest_framework.pagination import PageNumberPagination
-
+from django.http import QueryDict
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
+
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
+class DogFeedView(APIView):
+#  authentication_classes = (authentication.TokenAuthentication,)
+#  permission_classes = (IsOwnerOrReadOnly,)
+ 
+ def get(self, request, pk=None):
+    print("get ")
+    #  dog = get_object_or_404(Dog, pk=pk)
+    #  dog.feed()
+    #  return Response ({“msg“: “Dog fed“, status=status.HTTP_200_OK})
+    return Response({"hello":"20"})
 
 class Pagination(PageNumberPagination):
     
@@ -32,3 +49,98 @@ class DocumentsViewSet(viewsets.ModelViewSet):
     permission_classes=[permissions.AllowAny]##TODO add more 
     serializer_class=DocumentsSerializer
     pagination_class = Pagination
+
+
+class DocumentMetaViewSet(viewsets.ModelViewSet):
+    
+    # def get_queryset(self):
+    #     # queryset = Documents.objects.all()
+    #     docMetaQueryset=DocumentMeta.objects.all()
+    #     documentId = self.request.query_params.get('documentId', None)
+    #     print("Get using documentId:"+documentId)
+    #     if documentId is not None:
+    #         # docMetaQueryset=DocumentMeta.objects.all()
+    #         docMetaQueryset=docMetaQueryset.filter(document=documentId)
+    #         # queryset = queryset.filter(purchaser__document=documentId)
+    #     return docMetaQueryset
+    def  delete(self, request, pk=None):
+        print("deleting .....")
+        print(request)
+        print(pk)
+        print(type(request))
+        print(request.query_params)
+        print(QueryDict(request.body))
+        print(request.query_params['documentId'])
+        documentId=request.query_params['documentId']
+        print("documentId:"+documentId)
+        DocumentMeta.objects.filter(document=documentId).delete()
+        
+        # print(QueryDict(request.url))
+        return Response(data='delete success, enhance')
+
+    # def destroy(self, request, *args, **kwargs):
+    #     print("Creating destroy")
+    #     doctor = self.get_object()
+    #     doctor.is_active = False
+    #     doctor.save()
+    #     return Response(data='delete success')
+
+    # def destroy(self, request, *args, **kwargs):
+    #     print("destroy :ing")
+    #     instance = self.get_object()
+    #     self.perform_destroy(instance)
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def delete_queryset(modeladmin, request, queryset):
+        print('delete')
+    def create(self, request, *args, **kwargs):
+        # DocumentMeta.objects.create()
+        print("creating .....")
+        print(request)
+        print(QueryDict(request.body))
+        print(args)
+        print(kwargs)
+        # return Response(data='create success, enhance')
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        DocumentMeta.objects.create(**serializer.validated_data)
+
+        # 
+        print(serializer)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        # token, created = Token.objects.get_or_create(user=serializer.instance)
+        return Response({}, status=status.HTTP_201_CREATED, headers=headers)
+
+
+
+        # is_many = isinstance(request.data, list)
+        # serializer = self.get_serializer(data=request.data, many=is_many)
+        # serializer_class=DocumentMetaSerializer
+        # serializer.is_valid(raise_exception=True)
+        # self.perform_create(serializer)
+        # headers = self.get_success_headers(serializer.data)
+        # return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+    # print("querying .....")
+    queryset=DocumentMeta.objects.all().order_by('id')
+    # queryset = sorted(queryset, key= lambda t: t.id)
+    permission_classes=[permissions.AllowAny]##TODO add more 
+    serializer_class=DocumentMetaSerializer
+    pagination_class = Pagination
+
+    # @action(detail=False, methods=['get'])
+    # def delete_all(self, request):
+    #     print("delete_all")
+    #     # Product.objects.all().delete()
+    #     return Response('success')
+
+    @action(methods=['post'], detail=False)
+    def multi_update(self, request, *args, **kwargs):
+        print("delete_all")
+        return Response('success')
+        # queryset = self.filter_queryset(self.get_queryset())
+        # serializer = self.get_serializer(instance=queryset, data=request.data, many=True, partial=True) # add "partial=True"
+        # valid = serializer.is_valid(raise_exception=True)
+        # logger.error(serializer.validated_data)
+        # self.perform_update(serializer)
+        # return Response(serializer.data)

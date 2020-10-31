@@ -154,3 +154,9 @@ e.g. npx create-react-app dmsui
 
 
 
+Start process
+/Volumes/software/wisgo/mobile/elogitica/passion/dms/backend
+pipenv shell 
+/Volumes/software/wisgo/mobile/elogitica/passion/dms/backend/dms
+
+python manage.py runserver

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c6ad5493-3ab0-44e5-8b4a-9b1a74724b69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dms/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dms/dms/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/dms/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dms/documents/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dms/documents/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dms/documents/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dms/documents/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/api/api_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/api/api_config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/api/api_end_points.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/api/api_end_points.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/api/ui_routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/api/ui_routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/common/ref_data_hub.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/common/ref_data_hub.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/core/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/core/welcome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jdyFD7cZUVPQiNi0DhwLA1oddI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="dms" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/.local/share/virtualenvs/dms-u1CzffCK/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="dms" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/.local/share/virtualenvs/dms-u1CzffCK/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/dms" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/dms/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2">
+        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_pipenv shell" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="40" y="23" width="1071" height="664" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604149081699">
+      <screen x="0" y="23" width="1152" height="664" />
+    </state>
+    <state x="40" y="23" width="1071" height="664" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1152.664@0.23.1152.664" timestamp="1604149081699" />
+    <state x="341" y="192" width="474" height="483" key="#com.intellij.tools.ToolEditorDialog" timestamp="1604148838338">
+      <screen x="0" y="23" width="1152" height="664" />
+    </state>
+    <state x="341" y="192" width="474" height="483" key="#com.intellij.tools.ToolEditorDialog/0.23.1152.664@0.23.1152.664" timestamp="1604148838338" />
+    <state x="77" y="23" key="SettingsEditor" timestamp="1604149471313">
+      <screen x="0" y="23" width="1152" height="663" />
+    </state>
+    <state x="77" y="23" key="SettingsEditor/0.23.1152.663@0.23.1152.663" timestamp="1604149471313" />
+    <state x="77" y="23" key="SettingsEditor/0.23.1152.664@0.23.1152.664" timestamp="1604149201236" />
+    <state x="466" y="97" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1604148968714">
+      <screen x="0" y="23" width="1152" height="664" />
+    </state>
+    <state x="466" y="97" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/0.23.1152.664@0.23.1152.664" timestamp="1604148968714" />
+  </component>
+</project>

@@ -21,6 +21,9 @@ export default class ApiConfig{
     deleteOneUrl(id){
         return this.rootUrl+"/"+id+"/?format="+this.format;
     }
+    deleteDummyUrl(id){
+        return this.rootUrl+"/?format="+this.format;
+    }
     getHeaders(){
         return this.headers
     }

@@ -16,6 +16,9 @@ import TopNavigation from './common/top_nav'
 import SideNavigation from './common/side_nav'
 import Item from './core/items/item'
 import ItemList from './core/items/item_list'
+import Documents from './core/documents'
+import DocumentsEdit from './core/documents_edit'
+import DocumentDetail from './core/document_detail'
 
 
 import Welcome from './core/welcome'
@@ -88,6 +91,9 @@ function App() {
 
             <Route path={ROUTE_LINKS.WELCOME} component={Welcome} />
             <Route path={ROUTE_LINKS.LOGIN} component={LoginPage} />
+            <Route path={ROUTE_LINKS.DOCUMENTS} component={Documents} />
+            <Route path={ROUTE_LINKS.DOCUMENTS_EDIT} component={DocumentsEdit} />
+            <Route path={ROUTE_LINKS.DOCUMENTS_DETAIL} component={DocumentDetail} />
             {/* <PrivateRoute path={ROUTE_LINKS.ALL_INVENTORY_ITEM_MAKERS_LINK} component={ItemMakerList} /> */}
 
           </Col>

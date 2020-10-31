@@ -51,3 +51,24 @@ export const  LOGIN_ENDPOINT=new ApiConfig(
   },
   "json"
 );
+
+export const  DOCUMENTS_ENDPOINT=new ApiConfig(
+  "/api/doc/documents",
+  {
+    'Accept': 'application/json',
+    'Content-type': 'application/json'
+    // 'Content-type': 'multipart/form-data' //multipart/form-data
+  },
+  "json"
+);
+
+export const  DOCUMENT_META_ENDPOINT=new ApiConfig(
+  "/api/doc/document-meta",
+  {
+    'Accept': 'application/json',
+    'Content-type': 'application/json'
+    // 'Content-type': 'multipart/form-data' //multipart/form-data
+  },
+  "json"
+);
+

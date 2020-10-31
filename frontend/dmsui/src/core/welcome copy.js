@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   faHome, faAtom, faSave, faClock,
   faCalendarAlt, faAddressCard, faFilePdf, faUserTie, faWarehouse,
-  faChartBar, faClone, faDatabase, faFileInvoice,faEnvelope, faSquare,faPhoneSquareAlt,faFileAlt
+  faChartBar, faClone, faDatabase
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -197,7 +197,7 @@ class WelcomePage extends React.Component {
             
               <Nav.Item>
                
-                <Nav.Link style={{ fontSize: 20 }} href={ROUTE_LINKS.DOCUMENTS}>Document</Nav.Link>
+                <Nav.Link style={{ fontSize: 20 }} href="/home">Document</Nav.Link>
                 <Nav.Link style={{ fontSize: 12 }} href="/home">View, Add, Edit..</Nav.Link>
               </Nav.Item>
               
@@ -236,16 +236,12 @@ class WelcomePage extends React.Component {
             {this.renderIcon(faCalendarAlt, "TimeSheet", '#33A2FF','4x',20,10)}
             </Card>
             <Card  style={{ flex: 1, flexDirection: 'row',borderWidth:0 }}>
-            {this.renderIconSpin(faAtom, "Integrated Solutions", '#33A2FF','5x',10,10)}
+            {this.renderIconSpin(faAtom, "Delierying Solutions", '#33A2FF','5x',10,10)}
             </Card>
             <Card  style={{ flex: 1, flexDirection: 'row',borderWidth:0 }}>
-            {this.renderIcon(faWarehouse, "Inventory", '#33A2FF','4x',10,10)}
-            {this.renderIcon(faUserTie, "Clients", '#33A2FF','4x',10,10)}
-            {this.renderIcon(faChartBar, "Analytics", '#33A2FF','4x',10,10)}
-            {this.renderIcon(faFileInvoice, "Invoice", '#33A2FF','4x',10,10)}
-            {this.renderIcon(faEnvelope, "Email", 'Black','4x',10,10)}
-            {this.renderIcon(faPhoneSquareAlt, "Phone", 'Black','4x',10,10)}
-            {this.renderIcon(faFileAlt, "Purchase Order", '#33A2FF','4x',10,10)}
+            {this.renderIcon(faWarehouse, "Assets", 'black','4x',10,10)}
+            {this.renderIcon(faUserTie, "Clients", 'black','4x',10,10)}
+            {this.renderIcon(faChartBar, "Analytics", 'black','4x',10,10)}
             </Card>
             </Card>
             
@@ -263,7 +259,7 @@ class WelcomePage extends React.Component {
             
               <Nav.Item>
                
-                <Nav.Link style={{ fontSize: 20 }} href={ROUTE_LINKS.DOCUMENTS}>Document</Nav.Link>
+                <Nav.Link style={{ fontSize: 20 }} href="/home">Document</Nav.Link>
                 <Nav.Link style={{ fontSize: 12 }} href="/home">View, Add, Edit..</Nav.Link>
               </Nav.Item>
               

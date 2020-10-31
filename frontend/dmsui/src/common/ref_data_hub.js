@@ -14,11 +14,15 @@ export default class RefDataHub {
         return ApiHelper.fetchAllWithToken(API_END_POINTS.INVENTORY_ITEM_MAKERS_END_POINT)
     }
 
-    static fetchAllInventoryItems() {
-        return ApiHelper.fetchAllWithToken(API_END_POINTS.INVENTORY_ITEMS_END_POINT)
+    static fectAllDocuments() {
+        return ApiHelper.fetchAllWithToken(API_END_POINTS.DOCUMENTS_ENDPOINT)
     }
+   
     static fetchInventoryItem(objectRef) {
         return ApiHelper.featchOneWithToken(API_END_POINTS.INVENTORY_ITEMS_END_POINT,objectRef)
+    }
+    static fetchDocument(objectRef) {
+        return ApiHelper.featchOneWithToken(API_END_POINTS.DOCUMENTS_ENDPOINT,objectRef)
     }
 
     static putOneInventoryItem(objectRef, body) {
