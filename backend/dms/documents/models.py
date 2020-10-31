@@ -35,20 +35,9 @@ class DocumentMeta(models.Model):
     
     documentMeta=models.CharField(max_length=100)
     document = models.ForeignKey(Documents, related_name="documentMeta", on_delete=models.CASCADE)
-    def delete(self, *args, **kwargs):
-        print("delete")
-    def delete_model(self, request, object):
-        print("delete_model")
-    def delete_model(self, request, queryset):
-        for obj in queryset:
-            print(obj)
-    def delete(self, using=None):
-        print("delete using")
-    @receiver(models.signals.post_delete, sender=Documents)
-    def handle_deleted_profile(sender, instance, **kwargs): 
-        print("post delet")   
-    def delete(self):
-        print("delete --> ")
+    # def delete(self, *args, **kwargs):
+    #     super.delete(*args, **kwargs)
+    
     # def save(self, *args, **kwargs):
     #     print('saving')
     

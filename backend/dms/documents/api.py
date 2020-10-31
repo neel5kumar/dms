@@ -102,15 +102,14 @@ class DocumentMetaViewSet(viewsets.ModelViewSet):
         print(kwargs)
         # return Response(data='create success, enhance')
         serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        DocumentMeta.objects.create(**serializer.validated_data)
-
-        # 
-        print(serializer)
-        self.perform_create(serializer)
+        serializer.is_valid(raise_exception=True)#ToDO fix : is_valid
+        # result=self.perform_create(serializer)
+        result=serializer.save()
+        print("result")
+        print(result.id)
         headers = self.get_success_headers(serializer.data)
         # token, created = Token.objects.get_or_create(user=serializer.instance)
-        return Response({}, status=status.HTTP_201_CREATED, headers=headers)
+        return Response({"id":result.id,"msg":"Document meta crated, id="+str(result.id)}, status=status.HTTP_201_CREATED, headers=headers)
 
 
 

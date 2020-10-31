@@ -20,22 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c6ad5493-3ab0-44e5-8b4a-9b1a74724b69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/dms/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dms/dms/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/dms/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/dms/documents/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/dms/documents/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dms/documents/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dms/documents/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dmsui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dmsui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/api/api_config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/api/api_config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/api/api_end_points.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/api/api_end_points.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/api/ui_routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/api/ui_routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/common/ref_data_hub.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/common/ref_data_hub.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/core/welcome.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/core/welcome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/dmsui/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
