@@ -33,7 +33,8 @@ class Documents(models.Model):
 
 class DocumentMeta(models.Model):
     
-    documentMeta=models.CharField(max_length=100)
+    documentMetaValue=models.CharField(max_length=1000)
+    documentMetaAuto=models.CharField(max_length=1000000,blank=True)
     document = models.ForeignKey(Documents, related_name="documentMeta", on_delete=models.CASCADE)
     # def delete(self, *args, **kwargs):
     #     super.delete(*args, **kwargs)

@@ -86,6 +86,7 @@ pipenv install --three
 pipenv install django 
 pipenv install  djangorestframework 
 pipenv install  django-rest-knox
+pipenv install django-rest-framework-multi-slug-field
 
 pipenv shell 
 #or / pipenv run(inside)

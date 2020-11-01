@@ -21,9 +21,15 @@
   <component name="ChangeListManager">
     <list default="true" id="c6ad5493-3ab0-44e5-8b4a-9b1a74724b69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/dms/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dms/dms/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/dms/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/dms/documents/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/dms/documents/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dms/documents/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/core/documents_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/core/documents_edit.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +49,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
@@ -75,7 +81,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/.local/share/virtualenvs/dms-u1CzffCK/bin/python" />
+      <option name="SDK_HOME" value="$PROJECT_DIR$/../../../../../../wisgo-disk/quant/project/PycharmProjects/dms/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend/dms" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -87,9 +93,7 @@
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
-      <method v="2">
-        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_pipenv shell" />
-      </method>
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -105,9 +109,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="40" y="23" width="1071" height="664" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604149081699">
-      <screen x="0" y="23" width="1152" height="664" />
+    <state x="40" y="23" width="1071" height="663" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604228959471">
+      <screen x="0" y="23" width="1152" height="663" />
     </state>
+    <state x="40" y="23" width="1071" height="663" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1152.663@0.23.1152.663" timestamp="1604228959471" />
     <state x="40" y="23" width="1071" height="664" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1152.664@0.23.1152.664" timestamp="1604149081699" />
     <state x="341" y="192" width="474" height="483" key="#com.intellij.tools.ToolEditorDialog" timestamp="1604148838338">
       <screen x="0" y="23" width="1152" height="664" />
@@ -122,5 +127,9 @@
       <screen x="0" y="23" width="1152" height="664" />
     </state>
     <state x="466" y="97" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/0.23.1152.664@0.23.1152.664" timestamp="1604148968714" />
+    <state x="241" y="23" width="670" height="676" key="search.everywhere.popup" timestamp="1604151540661">
+      <screen x="0" y="23" width="1152" height="663" />
+    </state>
+    <state x="241" y="23" width="670" height="676" key="search.everywhere.popup/0.23.1152.663@0.23.1152.663" timestamp="1604151540661" />
   </component>
 </project>

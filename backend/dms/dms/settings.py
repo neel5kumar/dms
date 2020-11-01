@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'rest_framework',   #ToAdd
     'rest_framework.authtoken',#ToAdd
     'employees',#ToAdd
-    'documents'#ToAdd
+    'documents',#ToAdd,
+    'rest_framework_msf'
+    # 'django-rest-framework-multi-slug-field'
+    # 'django-rest-framework-multi-slug-field'
 
 ]
 

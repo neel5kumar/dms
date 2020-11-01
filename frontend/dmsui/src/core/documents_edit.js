@@ -1,4 +1,4 @@
-import { faSave } from "@fortawesome/free-solid-svg-icons";
+import { faSave, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -56,7 +56,7 @@ class DocumentsEdit extends React.Component {
   fetchAllItems() {
     var documentId=this.objectRefId();
     if (documentId) {
-      alert('Found:' + this.state.id)
+      // alert('Found:' + this.state.id)
       RefDataHub.fetchDocument(documentId).then(
         received => {
           if (received.status == 'Unauthorised') {
@@ -79,7 +79,18 @@ class DocumentsEdit extends React.Component {
   isEdit(){
     return this.objectRefId()!=undefined
   }
-
+  deleteDoc = async (event) => {
+    var documentId = this.state.id;
+    if(this.isEdit()){
+      // alert('delete')
+      var url2=docEndPoints.deleteOneUrl(documentId);
+      var requestOptions = {
+        method: 'DELETE',
+      };
+      const response2 = await fetch(url2, requestOptions);
+      return
+    }
+  }
   saveDocument = async (event) => {
     var formData = new FormData()
     console.log(this.state)
@@ -91,7 +102,8 @@ class DocumentsEdit extends React.Component {
     })
 
     if(this.isEdit()){
-      alert('edit')
+      // alert('edit')
+      const data = await this.putRequest(formData, docEndPoints)
       this.postDocMeta()
       return
     }
@@ -101,8 +113,9 @@ class DocumentsEdit extends React.Component {
         message: 'Saved Doc',
         id: data.id,
       });
+      this.postDocMeta()
     }
-    this.postDocMeta()
+    
 
     //Job.objects.get(pk=25).task_set.all().delete()
 
@@ -116,11 +129,8 @@ class DocumentsEdit extends React.Component {
   async postDocMeta() {
     var documentId = this.state.id;
     console.log("documentId-->" + documentId)
-    var formData = new FormData()
-    formData.append("documentMeta", this.state.documentMeta)
-    formData.append("document", documentId)
     if(documentId){
-      alert('deleting')
+      // alert('deleting')
       // const requestOptions = {
       //   method: 'DELETE',
       // };
@@ -143,8 +153,10 @@ class DocumentsEdit extends React.Component {
 
 
       var formData2 = new FormData()
-      formData2.append("documentMeta",this.state.documentMeta)
+      alert(this.state.documentMetaAuto)
+      formData2.append("documentMetaValue",this.state.documentMetaValue)
       formData2.append("document",documentId)
+      formData2.append("documentMetaAuto",this.state.documentMetaAuto)
       
       requestOptions = {
         method: 'POST',
@@ -157,14 +169,6 @@ class DocumentsEdit extends React.Component {
       return
     }
    
-    const data = await this.postRequest(formData, docMetaEndPoints)
-    console.log("meta")
-    console.log(data)
-    this.setState({
-      message2: 'Saved Meta',
-      metaId: data.id,
-    });
-
   }
   async postRequest(formData, endPoints) {
     const requestOptions = {
@@ -172,6 +176,19 @@ class DocumentsEdit extends React.Component {
       body: formData
     };
     const response = await fetch(endPoints.postOneUrl(), requestOptions);
+    const data = await response.json();
+    console.log(data)
+    return data
+
+  }
+
+  async putRequest(formData, endPoints) {
+    var documentId = this.state.id;
+    const requestOptions = {
+      method: 'PUT',
+      body: formData
+    };
+    const response = await fetch(endPoints.putOneUrl(documentId), requestOptions);
     const data = await response.json();
     console.log(data)
     return data
@@ -210,12 +227,23 @@ class DocumentsEdit extends React.Component {
                 <InputGroup.Prepend>
                   <InputGroup.Text>Meta Data</InputGroup.Text>
                 </InputGroup.Prepend>
-                <FormControl as="textarea" id="documentMeta" aria-label="With textarea" 
-                value={this.state.documentMeta}
-                onChange={(event) => this.handleMetaChange(event, "documentMeta")}
+                <FormControl as="textarea" id="documentMetaValue" aria-label="With textarea" 
+                value={this.state.documentMetaValue}
+                onChange={(event) => this.handleMetaChange(event, "documentMetaValue")}
                 />
               </InputGroup>
+              <InputGroup class="input-group input-group-lg">
+                <InputGroup.Prepend>
+                  <InputGroup.Text >Auto Data</InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl as="textarea" rows="10" style={{hight:10}}id="documentMetaAuto" aria-label="With textarea" 
+                value={this.state.documentMetaAuto}
+                onChange={(event) => this.handleMetaChange(event, "documentMetaAuto")}
+                />
+              </InputGroup>
+              {/* <textarea style={{height:400}}  value={this.state.documentMetaAuto}>
 
+              </textarea> */}
             </div>
           <div>
           {documentId!=undefined && <a href={this.state.uploadedFile} target="_blank">View</a>}
@@ -228,6 +256,11 @@ class DocumentsEdit extends React.Component {
                 Save Doc {' '}
                 <FontAwesomeIcon icon={faSave} size="1x" color='white' speed="6x" />
               </Button>
+              <Button style={{ textAlign: 'center', margin: 10 }} variant="dark" onClick={this.deleteDoc}>
+                Delete {' '}
+                <FontAwesomeIcon icon={faTrash} size="1x" color='white' speed="6x" />
+              </Button>
+              {' '}
               <Button style={{ textAlign: 'center', margin: 10 }} variant="dark" onClick={(event) => this.props.history.push(ROUTER_LINKS.DOCUMENTS)}>
                 Show All {' '}
                 <FontAwesomeIcon icon={faSave} size="1x" color='white' speed="6x" />

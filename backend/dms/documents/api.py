@@ -1,4 +1,5 @@
 from .models import Documents,DocumentMeta
+from documents.doc_reader import stringFromDoc
 from rest_framework import viewsets, permissions
 from .serializers import DocumentsSerializer,DocumentMetaSerializer
 from collections import OrderedDict
@@ -100,12 +101,30 @@ class DocumentMetaViewSet(viewsets.ModelViewSet):
         print(QueryDict(request.body))
         print(args)
         print(kwargs)
+        resultData=request.data.copy()
+        documentId=resultData['document']
         # return Response(data='create success, enhance')
-        serializer = self.get_serializer(data=request.data)
+        document=Documents.objects.filter(id=documentId).get()
+        textFromDoc=stringFromDoc(document.uploadedFile.path)
+        resultData['documentMetaAuto']=textFromDoc
+        serializer = self.get_serializer(data=resultData)
         serializer.is_valid(raise_exception=True)#ToDO fix : is_valid
         # result=self.perform_create(serializer)
+        
+        print("document--->")
+        print(document.uploadedFile.path)
+        print(document.uploadedFile)
+        print(document.uploadedFileName)
+        print("resultData")
+        print(resultData)
+       
+       
+        print("resultData2")
+        print(resultData)
         result=serializer.save()
         print("result")
+        print("textFromDoc")
+        print(textFromDoc)
         print(result.id)
         headers = self.get_success_headers(serializer.data)
         # token, created = Token.objects.get_or_create(user=serializer.instance)
