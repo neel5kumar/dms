@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from django.db.models import Q
 
 class DogFeedView(APIView):
 #  authentication_classes = (authentication.TokenAuthentication,)
@@ -44,12 +44,28 @@ class Pagination(PageNumberPagination):
 
 
 class DocumentsViewSet(viewsets.ModelViewSet):
-    print("querying .....")
-    queryset=Documents.objects.all().order_by('id')
-    # queryset = sorted(queryset, key= lambda t: t.id)
     permission_classes=[permissions.AllowAny]##TODO add more 
     serializer_class=DocumentsSerializer
     pagination_class = Pagination
+    def get_queryset(self):
+        print("querying get .....")
+        
+        searchMetaText = self.request.query_params.get('searchMetaText', None)
+        if searchMetaText is not None:
+            print("searchMetaText--->"+searchMetaText)
+            documentIds=DocumentMeta.objects\
+                .filter(Q(documentMetaValue__contains=searchMetaText) | Q(documentMetaAuto__contains=searchMetaText))\
+                    .values('document').all()
+            print("documentIds---")
+            print(documentIds)
+            queryset=Documents.objects.all().filter(pk__in=documentIds).order_by('id')
+            return queryset.all()
+        else:
+            queryset=Documents.objects.all().order_by('id')
+            return queryset.all()
+        # queryset = sorted(queryset, key= lambda t: t.id)
+        
+        
 
 
 class DocumentMetaViewSet(viewsets.ModelViewSet):
@@ -103,9 +119,12 @@ class DocumentMetaViewSet(viewsets.ModelViewSet):
         print(kwargs)
         resultData=request.data.copy()
         documentId=resultData['document']
+        mostNTags=int(resultData['mostNTags'])
+        print("resultData---->")
+        print(resultData)
         # return Response(data='create success, enhance')
         document=Documents.objects.filter(id=documentId).get()
-        textFromDoc=stringFromDoc(document.uploadedFile.path)
+        textFromDoc=stringFromDoc(document.uploadedFile.path,mostNTags)
         resultData['documentMetaAuto']=textFromDoc
         serializer = self.get_serializer(data=resultData)
         serializer.is_valid(raise_exception=True)#ToDO fix : is_valid

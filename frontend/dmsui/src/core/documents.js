@@ -1,28 +1,15 @@
-import { withRouter } from "react-router";
-import { useHistory } from "react-router-dom";
-
-import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import TreeView from '@material-ui/lab/TreeView';
-import TreeItem from '@material-ui/lab/TreeItem';
-import Typography from '@material-ui/core/Typography';
-import MailIcon from '@material-ui/icons/Mail';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Label from '@material-ui/icons/Label';
-import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
-import InfoIcon from '@material-ui/icons/Info';
-import ForumIcon from '@material-ui/icons/Forum';
-import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
+import React from 'react';
+import { Button, Card } from "react-bootstrap";
+import { withRouter } from "react-router";
+import { Link, useHistory } from "react-router-dom";
+import * as API_END_POINTS from '../api/api_end_points';
+import * as ROUTER_LINKS from '../api/ui_routes';
+import RefDataHub from '../common/ref_data_hub';
+import SimpleTable from '../common/simple_table';
 import DocumentNodes from './document_nodes';
-import { Button, Form, Card, FormGroup, FormControl, ListGroup, ListGroupItem, FormLabel, Container, Col, Row } from "react-bootstrap";
-import RefDataHub from '../common/ref_data_hub'
-import * as ROUTER_LINKS from '../api/ui_routes'
-import { Link } from 'react-router-dom';
-import SimpleTable from '../common/simple_table'
 
+const docEndPoints = API_END_POINTS.DOCUMENTS_ENDPOINT;
 const useStyles = makeStyles({
   root: {
     height: 264,
@@ -31,9 +18,11 @@ const useStyles = makeStyles({
   },
 });
 
-const headCells = [           
+
+
+const headCells = [
   {
-    id: 'id', numeric: false, disablePadding: true, label: 'Id', order:'desc' ,decorator:
+    id: 'id', numeric: false, disablePadding: true, label: 'Id', order: 'desc', decorator:
       function (row, currentValue) {
         var obj_result = {}
         obj_result['id'] = currentValue
@@ -46,11 +35,11 @@ const headCells = [
       }
 
   },
-  { id: 'documentName', numeric: false, disablePadding: false, label: 'Name'},
+  { id: 'documentName', numeric: false, disablePadding: false, label: 'Name' },
   { id: 'documentSize', numeric: false, disablePadding: false, label: 'size' },
- 
+
   {
-    id: 'uploadedFile', numeric: false, disablePadding: true, label: 'View', order:'desc' ,decorator:
+    id: 'uploadedFile', numeric: false, disablePadding: true, label: 'View', order: 'desc', decorator:
       function (row, currentValue) {
         return (<a href={currentValue} target="_blank">View</a>
         )
@@ -74,7 +63,52 @@ class Documents extends React.Component {
   constructor(props) {
     super(props)
     this.props = props
-    this.state={}
+    this.state = {}
+    this.onKeyDownHandler = this.onKeyDownHandler.bind(this);
+  }
+  onKeyDownHandler = e => {
+    // alert(e.keyCode)
+    if (e.keyCode === 13) {
+      this.searchDocument();
+      e.preventDefault();
+        e.stopPropagation();
+    }
+  };
+
+  searchDocument = async (event) => {
+    if (this.state.searchMetaText && this.state.searchMetaText.trim() != "") {
+      var searchMetaText = this.state.searchMetaText.trim();
+      // alert(searchMetaText)
+      var url = docEndPoints.getAllUrl() + "&searchMetaText=" + searchMetaText
+      // alert(url)
+      var requestOptions = {
+        method: 'GET'
+      };
+      await RefDataHub.fetchUsing(url,requestOptions).then(
+        received => {
+          // alert(received)
+          if (received.status == 'Unauthorised') {
+            console.log("Unauthorised")
+            this.state.unauthorised = true
+          }
+          console.log("received")
+          console.log(received)
+          var items = received.responseData.results
+          this.setState({
+            results: items,
+            resultCount: items.length
+          })
+  
+        }
+      )
+
+
+    }
+    else {
+      this.fetchAllItems()
+    }
+
+    // 
   }
   fetchAllItems() {
     RefDataHub.fectAllDocuments().then(
@@ -98,11 +132,11 @@ class Documents extends React.Component {
   componentDidMount() {
     this.fetchAllItems();
   }
-  
-   deleteDoc = (event, name) => {
-     alert('hi')
+
+  deleteDoc = (event, name) => {
+    alert('hi')
   }
-  
+
   render() {
     var mixedRows = []
     const { resultCount, results } = this.state;
@@ -116,18 +150,30 @@ class Documents extends React.Component {
     }
     // var headCells={}
     return (
-      
-      <Card noborder style={{flex:1, flexDirection:'row',borderWidth:0}}>
-        <Card style={{borderWidth:0}}><DocumentNodes /></Card>
+
+      <Card noborder style={{ flex: 1, flexDirection: 'row', borderWidth: 0 }}>
+        <Card style={{ borderWidth: 0 }}><DocumentNodes /></Card>
 
         <Card>
-        <SimpleTable mixedRows={mixedRows} headCells={headCells} tableTitle="Document List" />
-        </Card>
-        <Card style={{borderWidth:0}}>
-          <Button style={{ textAlign: 'center', margin: 10 }} variant="dark" onClick={(event) => this.props.history.push(ROUTER_LINKS.DOCUMENTS_EDIT)}>
-            Add New >>
+          <Card style={{ borderWidth: 0 }}>
+            <div>
+              <input id="searchMetaText" onChange={(event) => this.state.searchMetaText = event.target.value} onKeyDown={this.onKeyDownHandler}>
+
+              </input>
+              <Button style={{ textAlign: 'center', margin: 10 }} variant="dark" onClick={(event) => this.searchDocument()}>
+                Search
           </Button>
+              <Button style={{ textAlign: 'center', margin: 10 }} variant="dark" onClick={(event) => this.props.history.push(ROUTER_LINKS.DOCUMENTS_EDIT)}>
+                Add New >>
+          </Button>
+
+            </div>
+
+          </Card>
+          <SimpleTable mixedRows={mixedRows} headCells={headCells} tableTitle="Document List" />
+
         </Card>
+
       </Card>)
   }
 }

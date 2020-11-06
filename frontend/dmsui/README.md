@@ -67,6 +67,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
+https://betterstack.dev/projects/react-tag-input/
 
 
 mkdir <project_name>
@@ -87,6 +88,7 @@ pipenv install django
 pipenv install  djangorestframework 
 pipenv install  django-rest-knox
 pipenv install django-rest-framework-multi-slug-field
+pipenv install WordCloud
 
 pipenv shell 
 #or / pipenv run(inside)

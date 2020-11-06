@@ -24,12 +24,15 @@
       <change beforePath="$PROJECT_DIR$/backend/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Pipfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/dms/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dms/dms/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/dms/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/dms/documents/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dms/documents/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/dms/documents/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dms/documents/doc_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/dms/documents/doc_reader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/dmsui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/common/ref_data_hub.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/common/ref_data_hub.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/core/documents.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/core/documents.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/core/documents_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/core/documents_edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/dmsui/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/dmsui/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +121,22 @@
       <screen x="0" y="23" width="1152" height="664" />
     </state>
     <state x="341" y="192" width="474" height="483" key="#com.intellij.tools.ToolEditorDialog/0.23.1152.664@0.23.1152.664" timestamp="1604148838338" />
+    <state width="1131" height="141" key="GridCell.Tab.0.bottom" timestamp="1604589226872">
+      <screen x="0" y="23" width="1152" height="663" />
+    </state>
+    <state width="1131" height="141" key="GridCell.Tab.0.bottom/0.23.1152.663@0.23.1152.663" timestamp="1604589226872" />
+    <state width="1131" height="141" key="GridCell.Tab.0.center" timestamp="1604589226871">
+      <screen x="0" y="23" width="1152" height="663" />
+    </state>
+    <state width="1131" height="141" key="GridCell.Tab.0.center/0.23.1152.663@0.23.1152.663" timestamp="1604589226871" />
+    <state width="1131" height="141" key="GridCell.Tab.0.left" timestamp="1604589226871">
+      <screen x="0" y="23" width="1152" height="663" />
+    </state>
+    <state width="1131" height="141" key="GridCell.Tab.0.left/0.23.1152.663@0.23.1152.663" timestamp="1604589226871" />
+    <state width="1131" height="141" key="GridCell.Tab.0.right" timestamp="1604589226872">
+      <screen x="0" y="23" width="1152" height="663" />
+    </state>
+    <state width="1131" height="141" key="GridCell.Tab.0.right/0.23.1152.663@0.23.1152.663" timestamp="1604589226872" />
     <state x="77" y="23" key="SettingsEditor" timestamp="1604149471313">
       <screen x="0" y="23" width="1152" height="663" />
     </state>
@@ -127,9 +146,24 @@
       <screen x="0" y="23" width="1152" height="664" />
     </state>
     <state x="466" y="97" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/0.23.1152.664@0.23.1152.664" timestamp="1604148968714" />
+    <state x="277" y="109" width="598" height="490" key="find.popup" timestamp="1604586981148">
+      <screen x="0" y="23" width="1152" height="663" />
+    </state>
+    <state x="277" y="109" width="598" height="490" key="find.popup/0.23.1152.663@0.23.1152.663" timestamp="1604586981148" />
     <state x="241" y="23" width="670" height="676" key="search.everywhere.popup" timestamp="1604151540661">
       <screen x="0" y="23" width="1152" height="663" />
     </state>
     <state x="241" y="23" width="670" height="676" key="search.everywhere.popup/0.23.1152.663@0.23.1152.663" timestamp="1604151540661" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/backend/dms/documents/nlp_core.py</url>
+          <line>102</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

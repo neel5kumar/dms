@@ -10,6 +10,7 @@ django = "*"
 djangorestframework = "*"
 django-rest-knox = "*"
 django-rest-framework-multi-slug-field = "*"
+wordcloud = "*"
 
 [requires]
 python_version = "3.8"

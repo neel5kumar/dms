@@ -17,6 +17,9 @@ export default class RefDataHub {
     static fectAllDocuments() {
         return ApiHelper.fetchAllWithToken(API_END_POINTS.DOCUMENTS_ENDPOINT)
     }
+    static fetchUsing(url,request_options) {
+        return ApiHelper.getWithToken(url,request_options)
+    }
    
     static fetchInventoryItem(objectRef) {
         return ApiHelper.featchOneWithToken(API_END_POINTS.INVENTORY_ITEMS_END_POINT,objectRef)

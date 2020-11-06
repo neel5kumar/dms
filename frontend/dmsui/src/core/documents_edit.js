@@ -6,11 +6,20 @@ import React from 'react';
 import { Button, Card, FormControl, InputGroup } from "react-bootstrap";
 import { withRouter } from "react-router";
 import { useHistory } from "react-router-dom";
+import TagText from "./tag_text"
 import * as API_END_POINTS from '../api/api_end_points';
 import * as ROUTER_LINKS from '../api/ui_routes';
 import RefDataHub from '../common/ref_data_hub';
 import DocumentNodes from './document_nodes';
+import { TagInput } from 'reactjs-tag-input'
 
+import TagsInput from 'react-tagsinput'
+
+import 'react-tagsinput/react-tagsinput.css' 
+import ReactTagInput from "@pathofdev/react-tag-input";
+
+import "@pathofdev/react-tag-input/build/index.css";
+import './tag_select.css'
 const docEndPoints = API_END_POINTS.DOCUMENTS_ENDPOINT;
 const docMetaEndPoints = API_END_POINTS.DOCUMENT_META_ENDPOINT;
 
@@ -26,11 +35,13 @@ class DocumentsEdit extends React.Component {
   constructor(props) {
     super(props)
     this.props = props
-    this.state = {}
+    // this.state = {}
+    this.state = { tags: [] }
+    this.onTagsChanged = this.onTagsChanged.bind(this);
     if (this.props.location.objectRef) {
-      this.state.id=this.props.location.objectRef.id
+      this.state.id = this.props.location.objectRef.id
     }
-    this.handleMetaChange=this.handleMetaChange.bind(this)
+    this.handleMetaChange = this.handleMetaChange.bind(this)
   }
   handleUpload = event => {
     var file = event.target.files[0];
@@ -40,21 +51,26 @@ class DocumentsEdit extends React.Component {
       documentSize: file.size
     });
   };
- 
+
+  onTagsChanged(tags) {
+    this.setState({ tags })
+    alert(this.state.tags)
+  }
+
 
   handleMetaChange = (event, state) => {
     this.setState({ [state]: event.target.value });
-    
+
     console.log(event.target.value)
     console.log(state)
   };
 
-  objectRefId(){
+  objectRefId() {
     return this.state.id
   }
 
   fetchAllItems() {
-    var documentId=this.objectRefId();
+    var documentId = this.objectRefId();
     if (documentId) {
       // alert('Found:' + this.state.id)
       RefDataHub.fetchDocument(documentId).then(
@@ -63,27 +79,27 @@ class DocumentsEdit extends React.Component {
             console.log("Unauthorised")
             this.state.unauthorised = true
           }
-          var response=received.responseData
+          var response = received.responseData
           console.log(response)
           // var items = received
           Object.keys(response).forEach(key => {
-            
+
             this.setState({ [key]: response[key] })
-            console.log("key"+ key + " value "+this.state[key])
+            console.log("key" + key + " value " + this.state[key])
           })
         });
     }
 
     console.log('data received ')
   }
-  isEdit(){
-    return this.objectRefId()!=undefined
+  isEdit() {
+    return this.objectRefId() != undefined
   }
   deleteDoc = async (event) => {
     var documentId = this.state.id;
-    if(this.isEdit()){
+    if (this.isEdit()) {
       // alert('delete')
-      var url2=docEndPoints.deleteOneUrl(documentId);
+      var url2 = docEndPoints.deleteOneUrl(documentId);
       var requestOptions = {
         method: 'DELETE',
       };
@@ -100,51 +116,56 @@ class DocumentsEdit extends React.Component {
       // console.log(item[i])
       formData.append(i, this.state[i])
     })
-
-    if(this.isEdit()){
+    if(!this.state.mostNTags){
+      this.state.mostNTags=100
+    }
+    if (this.isEdit()) {
       // alert('edit')
+      
       const data = await this.putRequest(formData, docEndPoints)
-      this.postDocMeta()
+      await this.postDocMeta()
+      await this.fetchAllItems();
       return
     }
-    else{
+    else {
       const data = await this.postRequest(formData, docEndPoints)
       this.setState({
         message: 'Saved Doc',
         id: data.id,
       });
-      this.postDocMeta()
+      await this.postDocMeta()
+      await this.fetchAllItems();
     }
-    
+
 
     //Job.objects.get(pk=25).task_set.all().delete()
 
 
-   
 
-  
+
+
 
   }
 
   async postDocMeta() {
     var documentId = this.state.id;
     console.log("documentId-->" + documentId)
-    if(documentId){
+    if (documentId) {
       // alert('deleting')
       // const requestOptions = {
       //   method: 'DELETE',
       // };
-    
+
       var requestOptions = {
         method: 'GET',
         // body: formData2
       };
-      var url=docMetaEndPoints.getOneUrl(documentId)+"&documentId="+documentId
+      var url = docMetaEndPoints.getOneUrl(documentId) + "&documentId=" + documentId
       // alert(url)
       const response = await fetch(url, requestOptions);
 
-      
-      var url2=docMetaEndPoints.deleteDummyUrl(documentId)+"&documentId="+documentId
+
+      var url2 = docMetaEndPoints.deleteDummyUrl(documentId) + "&documentId=" + documentId
       requestOptions = {
         method: 'DELETE',
         // body: formData2
@@ -153,22 +174,23 @@ class DocumentsEdit extends React.Component {
 
 
       var formData2 = new FormData()
-      alert(this.state.documentMetaAuto)
-      formData2.append("documentMetaValue",this.state.documentMetaValue)
-      formData2.append("document",documentId)
-      formData2.append("documentMetaAuto",this.state.documentMetaAuto)
-      
+      // alert(this.state.documentMetaAuto)
+      formData2.append("documentMetaValue", this.state.documentMetaValue)
+      formData2.append("document", documentId)
+      formData2.append("documentMetaAuto", this.state.documentMetaAuto)
+      formData2.append("mostNTags", this.state.mostNTags)
+
       requestOptions = {
         method: 'POST',
         body: formData2
       };
-      url=docMetaEndPoints.postOneUrl();
+      url = docMetaEndPoints.postOneUrl();
       const response3 = await fetch(url, requestOptions);
 
       // const response = await fetch(docMetaEndPoints.deleteOneUrl(documentId), requestOptions);
       return
     }
-   
+
   }
   async postRequest(formData, endPoints) {
     const requestOptions = {
@@ -200,8 +222,9 @@ class DocumentsEdit extends React.Component {
   render() {
     // alert(this.props.location.objectRef.id)
     var disabledSave = this.state.documentName == undefined;
-    var documentId=this.state.id;
+    var documentId = this.state.id;
     var docmumentDetail = ""
+    const { tags, suggestions } = this.state;
     if (this.state.documentSize) {
       docmumentDetail = "Size:" + (this.state.documentSize) / 1000 + " KB"
     }
@@ -218,8 +241,43 @@ class DocumentsEdit extends React.Component {
               <label class="btn btn-default btn-file"> <TextField
                 name="upload-photo" id="file_loader_dummy"
                 type="file" id="uploadedFile"
-                 onChange={this.handleUpload} >
+                onChange={this.handleUpload} >
               </TextField></label>
+            </div>
+            <div style={{ height: 100 }}>
+              {/* https://stackblitz.com/edit/react-tag-input */}
+              <ReactTagInput
+                tags={this.state.tags}
+                placeholder="Type and press enter2"
+                maxTags={10}
+                editable={true}
+                readOnly={false}
+                removeOnBackspace={true}
+                handleInputChange={(inputTag) => alert(inputTag)}
+                onChange={(newTags) => this.onTagsChanged(newTags)}
+                wrapperStyle={{ background: 'red' }}
+              // validator={(value) => {
+              //   // Don't actually validate e-mails this way
+              //   const isEmail = value.indexOf("@") !== -1;
+              //   if (!isEmail) {
+              //     alert("Please enter an e-mail address");
+              //   }
+              //   // Return boolean to indicate validity
+              //   return isEmail;
+              // }}
+              />
+
+            </div>
+            <div>
+            <TagsInput value={this.state.tags} onChange={(newTags) => this.onTagsChanged(newTags)} />
+            </div>
+            <div>
+              Hello
+              <TagText/>
+            </div>
+            <div>
+            Hello2
+            <TagInput tags={this.state.tags} onTagsChanged={this.onTagsChanged} />
             </div>
             <div>
 
@@ -227,27 +285,31 @@ class DocumentsEdit extends React.Component {
                 <InputGroup.Prepend>
                   <InputGroup.Text>Meta Data</InputGroup.Text>
                 </InputGroup.Prepend>
-                <FormControl as="textarea" id="documentMetaValue" aria-label="With textarea" 
-                value={this.state.documentMetaValue}
-                onChange={(event) => this.handleMetaChange(event, "documentMetaValue")}
+                <FormControl as="textarea" id="documentMetaValue" aria-label="With textarea"
+                  value={this.state.documentMetaValue}
+                  onChange={(event) => this.handleMetaChange(event, "documentMetaValue")}
                 />
               </InputGroup>
               <InputGroup class="input-group input-group-lg">
                 <InputGroup.Prepend>
                   <InputGroup.Text >Auto Data</InputGroup.Text>
                 </InputGroup.Prepend>
-                <FormControl as="textarea" rows="10" style={{hight:10}}id="documentMetaAuto" aria-label="With textarea" 
-                value={this.state.documentMetaAuto}
-                onChange={(event) => this.handleMetaChange(event, "documentMetaAuto")}
+                
+                <FormControl as="textarea" rows="10" style={{ hight: 10 }} id="documentMetaAuto" aria-label="With textarea"
+                  value={this.state.documentMetaAuto}
+                  onChange={(event) => this.handleMetaChange(event, "documentMetaAuto")}
                 />
               </InputGroup>
+              <div>
+                Most n tags <input type="text" id="mostNTags" defaultValue={100} onChange={(event) => this.state.mostNTags = event.target.value}></input>
+                </div>
               {/* <textarea style={{height:400}}  value={this.state.documentMetaAuto}>
 
               </textarea> */}
             </div>
-          <div>
-          {documentId!=undefined && <a href={this.state.uploadedFile} target="_blank">View</a>}
-          </div>
+            <div>
+              {documentId != undefined && <a href={this.state.uploadedFile} target="_blank">View</a>}
+            </div>
 
             <div>
 
@@ -261,6 +323,7 @@ class DocumentsEdit extends React.Component {
                 <FontAwesomeIcon icon={faTrash} size="1x" color='white' speed="6x" />
               </Button>
               {' '}
+              
               <Button style={{ textAlign: 'center', margin: 10 }} variant="dark" onClick={(event) => this.props.history.push(ROUTER_LINKS.DOCUMENTS)}>
                 Show All {' '}
                 <FontAwesomeIcon icon={faSave} size="1x" color='white' speed="6x" />
@@ -269,7 +332,7 @@ class DocumentsEdit extends React.Component {
             </div>
             <div>
               {this.state.message} : {this.state.id}
-              <br/>
+              <br />
               {this.state.message2} : {this.state.metaId}
             </div>
 
